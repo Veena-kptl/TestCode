@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Checkout\Model\Cart">
+		<plugin name="WebkulCart" type="Plugin\Trial\Model\Cart" sortOrder="10" />
+	</type>
+    <type name="Magento\Catalog\Model\Product">
+		<plugin name="WebkulProduct" type="Plugin\Trial\Model\Product" sortOrder="10" />
+	</type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="addPro" type="Plugin\Trial\Model\ProductCart" sortOrder="20" />
+    </type>
+</config>
