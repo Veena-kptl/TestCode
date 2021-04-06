@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="SearchApi\CustomModule\Api\ProductRepositoryInterface" type="SearchApi\CustomModule\Model\ProductRepositoryModel" />
+    <preference for="SearchApi\CustomModule\Api\Data\ProductSearchResultsInterface" type="SearchApi\CustomModule\Model\ProductSearchResults" />
+    <preference for="SearchApi\CustomModule\Api\ProductSearchCriteriaInterface" type="SearchApi\CustomModule\Model\ProductSearchCriteria" />
+</config>
