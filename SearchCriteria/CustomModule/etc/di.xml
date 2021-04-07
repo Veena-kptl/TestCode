@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="SearchCriteria\CustomModule\Api\CategoryLinkManagementInterface" type="SearchCriteria\CustomModule\Model\CategoryLinkManagement" />
+    <preference for="SearchCriteria\CustomModule\Api\Data\CategoryProductLinkInterface" type="SearchCriteria\CustomModule\Model\CategoryProductLink" />
+</config>
+
