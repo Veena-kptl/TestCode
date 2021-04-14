@@ -1,0 +1,41 @@
+<div class="row clearfix">
+        <div class="col-md-12 column">
+            <form name="form_height" method="POST" id="form_height">
+                  <div class="well">
+                    <strong><?php echo __('Enter Height:')?></strong>
+                    <input type="text" name="height" class="form-control input-md">
+                    <strong><?php echo __('Enter Weight:')?></strong>
+                    <input type="text" name="weight" class="form-control input-md">
+                    <span id="result" class="form-control input-md"></span>
+                    <input type="submit" id="calculateTotalSubmit"  name="calculate-total-submit" value="Calculate Total">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+<script>
+require(['jquery'],function(){
+    jQuery(document).ready(function() {
+        jQuery("#form_height").submit(function(){
+
+            var heightValue = jQuery("input[name='height']").val();
+            var weightValue = jQuery("input[name='weight']").val();
+
+            var url = "<?php echo $block->getBaseUrl().'calculator/result/result/' ?>";
+            jQuery.ajax({
+            url: url,
+            type: "POST",
+            data: {height:heightValue,weight:weightValue},
+            showLoader: true,
+            cache: false,
+            success: function(response){
+                jQuery("#result").html(response.output);
+            }
+        });
+        return false;
+        });
+    });
+});
+</script>

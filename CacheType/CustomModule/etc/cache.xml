@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="cache_name" translate="description,label" instance="CacheType\CustomModule\Cache\Type">
+        <label>Cache Label</label>
+        <description> Description About Action or purpose</description>
+    </type>
+</config>
