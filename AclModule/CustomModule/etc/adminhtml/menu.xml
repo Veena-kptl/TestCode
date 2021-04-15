@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+   <menu>
+       <add id="AclModule_CustomModule::exampleparent" title="Example: Parent Resource" module="AclModule_CustomModule" sortOrder="51" resource="AclModule_CustomModule::exampleparent"/>
+       <add id="AclModule_CustomModule::examplechild" title="Example: Child Resource" module="AclModule_CustomModule" sortOrder="10" action="exampleacl/index/index" resource="AclModule_CustomModule::examplechild" parent="AclModule_CustomModule::exampleparent"/>
+   </menu>
+</config>
