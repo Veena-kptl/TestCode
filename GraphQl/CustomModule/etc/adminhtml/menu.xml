@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="GraphQl_CustomModule::graphql" title="Books And Authors" module="GraphQl_CustomModule" sortOrder="20"  resource="GraphQl_CustomModule::graphql"/>
+        <add id="GraphQl_CustomModule::author" title="Manage Authors" module="GraphQl_CustomModule" sortOrder="10" parent="GraphQl_CustomModule::graphql" action="cedgraphql/author/index" resource="GraphQl_CustomModule::author"/>
+        <add id="GraphQl_CustomModule::book" title="Manage Books" module="GraphQl_CustomModule" sortOrder="20" parent="GraphQl_CustomModule::graphql" action="cedgraphql/book/index" resource="GraphQl_CustomModule::book"/>
+    </menu>
+</config>

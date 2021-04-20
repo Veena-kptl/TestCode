@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+   <menu>
+        <add id="AdminFormGrid_CustomModule::view" title="Blogs" module="AdminFormGrid_CustomModule" sortOrder="11" resource="AdminFormGrid_CustomModule::view"/>
+
+        <add id="AdminFormGrid_CustomModule::grid" title="Manage Blog" module="AdminFormGrid_CustomModule" sortOrder="10" parent="AdminFormGrid_CustomModule::view" action="blogs/grid/index" resource="AdminFormGrid_CustomModule::view"/>
+</menu>
+</config>
