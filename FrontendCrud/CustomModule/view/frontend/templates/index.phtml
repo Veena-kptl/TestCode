@@ -1,0 +1,72 @@
+<div class="block block-dashboard-orders">
+
+    <form class="form contact-inchoo" action="<?php /* @escapeNotVerified */ echo $block->getBaseUrl().$block->getFormAction(); ?>" id="os-form" method="post" data-hasrequired="* Required Fields">
+        <fieldset class="fieldset">
+            <div class="field name required">
+                <label class="label" for="title"><span><?php echo __('Title'); ?> </span></label>
+                <div class="control">
+                    <input name="title" id="title" title="title" value="" class="input-text" type="text" data-validate='{"required":true}' placeholder="<?php echo __('Title'); ?> " />
+                </div>
+            </div>
+            <div class="field name required">
+                <label class="label" for="description"><span><?php echo __('Description'); ?></span></label>
+                <div class="control">                    
+                    <textarea name="description" id="description" title="description" value="" class="input-text" data-validate='{"required":true}'"></textarea>
+                </div>
+            </div>                        
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="Submit" class="action submit primary">
+                    <span>Send</span>
+                </button>
+            </div>
+        </div>
+    </form>
+    <h1></h1>
+    <div class="block-title order">
+        <strong>Welcome to Os Support </strong>
+    </div>
+
+    <table class="data table-order-items"> 
+        <caption class="table-caption"> Lest OS</caption>
+        <thead>
+            <tr>
+                <th class="col" scope="col">#</th>
+                <th class="col" scope="col"><?php echo __('Title'); ?></th>
+                <th class="col" scope="col"><?php echo __('Description'); ?></th>
+                <th class="col" scope="col"><?php echo __('Date'); ?></th>
+                <th class="col" scope="col"><?php echo __('Status'); ?></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($block->getTicketCollection() as $item) : ?>
+                <tr>
+                    <td><b><?php echo $item->getTicketId();?></b></td>
+                    <td><b><?php echo $item->getTitle();?></b></td>   
+                    <td><b><?php echo $item->getDescription();?></b></td>   
+                    <td><b><?php echo $block->formatDate($item->getCreationDate());?></b></td>
+                    <td><b><?php if($item->getIsActive()== 1){ echo __('Waiting for an answer'); }else{ echo __('Answered'); } ?></b></td>  
+                </tr>
+                <?php if($item->getIsActive()!= 1):?>
+                <tr>
+                    <td></td>
+                    <td colspan="3" class="text-info"> &bull;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $item->getAnswer(); ?></td>
+                </tr>
+                <?php endif?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+</div>
+<script type="text/x-magento-init">
+    {
+    "#os-form": {
+    "validation": {}
+    }
+    }
+</script>

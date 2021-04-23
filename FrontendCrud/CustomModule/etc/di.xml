@@ -1,0 +1,16 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customer_answer_listing_data_source" xsi:type="string">FrontendCrud\CustomModule\Model\ResourceModel\Os\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="FrontendCrud\CustomModule\Model\ResourceModel\Os\Grid\Collection" type="FrontendCrud\CustomModule\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customer_answer</argument>
+            <argument name="resourceModel" xsi:type="string">FrontendCrud\CustomModule\Model\ResourceModel\Answer</argument>
+        </arguments>
+    </virtualType>
+</config>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="FrontendCrud_CustomModule::answer" title="Tickets" module="FrontendCrud_CustomModule" sortOrder="51" resource="Os_Customer::answer"/>
+        <add id="FrontendCrud_CustomModule::index_answer" title="Tickets Answer" module="FrontendCrud_CustomModule" sortOrder="10" action="os_customer/answer" resource="FrontendCrud_CustomModule::answer" parent="FrontendCrud_CustomModule::answer"/>
+    </menu>
+</config>

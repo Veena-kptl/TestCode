@@ -1,0 +1,40 @@
+type Query {
+    CustomerOrderList (
+        customer_id: Int @doc(description: "Id of the Customer")
+    ): SalesOrder @resolver(class: "CustomerGraphQL\\CustomModule\\Model\\Resolver\\CustomerOrder") @doc(description: "The Sales Order query returns information about a customer placed order")
+}
+type SalesOrder @doc(description: "Sales Order graphql gather data of order item information") {
+    fetchRecords : [CustomerOrderRecord] @doc(description: "An array of customer placed order fetch records")
+}
+type CustomerOrderRecord @doc(description: "Customer placed order items information") {
+    increment_id: String @doc(description: "Increment Id of Sales Order")
+    customer_name: String @doc(description: "Customer name of Sales Order")
+    grand_total: String @doc(description: "Grand total of Sales Order")
+    qty: Int @doc(description: "Order item quantity")
+    shipping_method: String @doc(description: "Shipping method of order placed")
+    payment_method: String @doc(description: "Payment method of order placed")
+}
+
+type Query {
+
+    last_product_review(
+
+    id: Int! @doc(description: "Specify the id of the product.")
+
+    ): reviewData @resolver( class: "CustomerGraphQL\\CustomModule\\Model\\Resolver\\Reviews") @doc(description: "Get list of reviews for the given product id.")
+
+}
+
+type reviewData {
+
+    review_id: String
+
+    created_at: String
+
+    title: String
+
+    detail: String
+
+    nickname:String
+
+}
