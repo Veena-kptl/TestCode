@@ -1,166 +1,66 @@
 <?php
 namespace CountdownTimer\TaskModule\Ui\DataProvider\Product\Form\Modifier;
-
-use Magento\Catalog\Model\Locator\LocatorInterface;
 use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Framework\Stdlib\ArrayManager;
-use Magento\Framework\UrlInterface;
-use Magento\Ui\Component\Container;
-use Magento\Ui\Component\Form\Fieldset;
-
+use Magento\Ui\Component\Form;
 class DailyDeals extends AbstractModifier
 {
-
-    const SAMPLE_FIELDSET_NAME = 'custom_fieldset';
-    const SAMPLE_FIELD_NAME = 'sample_field';
-
     /**
-     * @var \Magento\Catalog\Model\Locator\LocatorInterface
+     * {@inheritdoc}
      */
-    protected $locator;
-
-    /**
-     * @var ArrayManager
-     */
-    protected $arrayManager;
-
-    /**
-     * @var UrlInterface
-     */
-    protected $urlBuilder;
-
-    /**
-     * @var array
-     */
-    protected $meta = [];
-
-    /**
-     * @param LocatorInterface $locator
-     * @param ArrayManager $arrayManager
-     * @param UrlInterface $urlBuilder
-     */
-    public function __construct(
-        LocatorInterface $locator,
-        ArrayManager $arrayManager,
-        UrlInterface $urlBuilder
-    ) {
-        $this->locator = $locator;
-        $this->arrayManager = $arrayManager;
-        $this->urlBuilder = $urlBuilder;
-    }
-
+    
     public function modifyData(array $data)
     {
-        return array_replace_recursive(
-            $data,
-            [
-                $this->locator->getProduct()->getId() => [
-                    static::DATA_SOURCE_DEFAULT => [
-                        static::SAMPLE_FIELD_NAME => $this->locator->getProduct()->getData(static::SAMPLE_FIELD_NAME),
-                    ]
-                ]
-            ]
-        );
+        return $data;
     }
-
+    /**
+     * {@inheritdoc}
+     */
     public function modifyMeta(array $meta)
     {
-        $this->meta = $meta;
-        $this->addFieldset();
-
-        return $this->meta;
-    }
-
-    protected function addFieldset()
-    {
-        $this->meta = array_replace_recursive(
-            $this->meta,
+        $meta = array_replace_recursive(
+            $meta,
             [
-                static::SAMPLE_FIELDSET_NAME => [
+                'dailydeals' => [
                     'arguments' => [
                         'data' => [
                             'config' => [
-                                'label' => __('Sample Fieldset'),
-                                'componentType' => Fieldset::NAME,
-                                'dataScope' => 'data.product',
+                                'additionalClasses' => 'admin__fieldset-dailydeals',
+                                'label' => __('Daily Deals'),
                                 'collapsible' => true,
-                                'sortOrder' => 10,
+                                'componentType' => Form\Fieldset::NAME,
+                                'dataScope' => self::DATA_SCOPE_PRODUCT,
+                                'disabled' => false,
+                                'sortOrder' => $this->getNextGroupSortOrder(
+                                    $meta,
+                                    'search-engine-optimization',
+                                    15
+                                )
                             ],
                         ],
                     ],
-                    'children' => [
-                        'header_container' => $this->getHeaderContainerConfig(10),
-                        // Add children here
-                    ],
+                    'children' =>$this->getPanelChildren(),
                 ],
             ]
         );
-
-        return $this;
+        return $meta;
     }
-
-    /**
-     * Get config for header container
-     *
-     * @param int $sortOrder
-     * @return array
-     */
-    protected function getHeaderContainerConfig($sortOrder)
+    protected function getPanelChildren()
     {
         return [
-            'arguments' => [
-                'data' => [
-                    'config' => [
-                        'label' => null,
-                        'formElement' => Container::NAME,
-                        'componentType' => Container::NAME,
-                        'sortOrder' => $sortOrder,
-                        'content' => __('Sample content.'),
-                    ],
-                ],
-            ],
-            'children' => [
-                'sample_container' => $this->getSampleContainer(10),
-            ],
+            'custom_tab_content' => $this->getCustomContent()
         ];
     }
-
-    protected function getSampleContainer($sortOrder)
+    protected function getCustomContent()
     {
         return [
             'arguments' => [
                 'data' => [
                     'config' => [
-                        'label' => null,
-                        'formElement' => Fieldset::NAME,
-                        'componentType' => Fieldset::NAME,
-                        'sortOrder' => $sortOrder,
-                        'additionalClasses' => 'admin__field-wide',
-                    ],
-                ],
-            ],
-            'children' => [
-                static::SAMPLE_FIELD_NAME => $this->getSampleFieldConfig(10)
-            ],
-        ];
-    }
-
-    protected function getSampleFieldConfig($sortOrder)
-    {
-        return [
-            'arguments' => [
-                'data' => [
-                    'config' => [
-                        'label' => __('Sample Field'),
-                        'componentType' => \Magento\Ui\Component\Form\Field::NAME,
-                        'formElement' => \Magento\Ui\Component\Form\Element\Input::NAME,
-                        'dataScope' => static::SAMPLE_FIELD_NAME,
-                        'dataType' => \Magento\Ui\Component\Form\Element\DataType\Text::NAME,
-                        'sortOrder' => $sortOrder,
-                        'validation' => [
-                            'letters-with-basic-punc' => true,
-                        ],
-                        'required' => true,
+                        'content' => "Daily Details",
+                        'formElement' => 'container',
+                        'componentType' => 'container',
+                        'label' => false,
+                        'template' => 'ui/form/components/complex',
                     ],
                 ],
             ],
@@ -168,3 +68,4 @@ class DailyDeals extends AbstractModifier
         ];
     }
 }
+?>

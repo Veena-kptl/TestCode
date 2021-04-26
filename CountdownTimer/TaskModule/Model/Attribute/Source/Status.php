@@ -18,6 +18,7 @@ class Status extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
             $this->_options = [
                 ['label' => __('--Select--'), 'value' => ''],
                 ['label' => __('Enabled'), 'value' => '0'],
+                ['label' => __('Disabled'), 'value' => '1'],
             ];
         }
         return $this->_options;

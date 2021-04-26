@@ -11,7 +11,7 @@
             <argument name="modifiers" xsi:type="array">
                 <item name="DailyDeals" xsi:type="array">
                     <item name="class" xsi:type="string">CountdownTimer\TaskModule\Ui\DataProvider\Product\Form\Modifier\DailyDeals</item>
-                    <item name="sortOrder" xsi:type="number">2</item>
+                    <item name="sortOrder" xsi:type="number">15</item>
                 </item>
             </argument>
         </arguments>
