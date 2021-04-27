@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="CrudExample_CustomModule::module" title="Simple CRUD">
+                    <resource id="CrudExample_CustomModule::review" title="Review">
+                        <resource id="CrudExample_CustomModule::save" title="Save"/>
+                        <resource id="CrudExample_CustomModule::delete" title="Delete"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
