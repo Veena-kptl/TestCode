@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="3columns" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>My Custom Page</title>
+    </head>
+      <body> 
+    <referenceContainer name="content">
+        <block class="CustomBlocks\TaskModule\Block\Custompage" name="helloworld_index_index" template="CustomBlocks_TaskModule::Index.phtml" />
+        <block class="Magento\Cms\Block\Block" name="content-block">
+            <arguments>
+              <argument name="block_id" xsi:type="string">content-block</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+     <referenceContainer name="sidebar.additional">
+        <block class="Magento\Cms\Block\Block" name="left-block">
+            <arguments>
+              <argument name="block_id" xsi:type="string">left-block</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+    <referenceContainer name="sidebar.main">
+   <block class="Magento\Cms\Block\Block" name="right-block">
+       <arguments>
+            <argument name="block_id" xsi:type="string">right-block</argument>
+       </arguments>
+   </block>
+</referenceContainer>
+    </body>
+</page>

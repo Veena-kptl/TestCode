@@ -57,7 +57,7 @@ class Book extends AbstractModel implements BookInterface
      */
     public function getLanguage()
     {
-        return $this->getData(self::KEY_LANG);
+        return explode(',', $this->getData(self::KEY_LANG));
     }
     /**
      * @return string

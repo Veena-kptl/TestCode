@@ -27,7 +27,13 @@
                         <?php $id = ($data->getId()) ? $data->getId() : $data['id']; ?>
                         <!-- "$data->getTesting13Id()" was not working when I generated Vky_Testing13 module. That's why I had to place above line. -->
                         <a href="<?php echo $block->getBaseUrl().'book/index/view/id/'.$id; ?>" class="action view">
-                            <span>View</span>
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a href="<?php echo $block->getBaseUrl().'book/index/edit/id/'.$id; ?>" class="action edit">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="<?php echo $block->getBaseUrl().'book/index/delete/id/'.$id; ?>" class="action delete">
+                            <i class="fa fa-trash"></i>
                         </a>
                     </td>
                 </tr>

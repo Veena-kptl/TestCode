@@ -1,0 +1,33 @@
+<form class="" action="<?php echo $this->getUrl('stock/index/save/') ?>" id="book-form" method="post" enctype='multipart/form-data'  data-mage-init='{"validation": {}}'>
+    <fieldset class="fieldset">
+        <div class="field note no-label">Edit Stock </div>
+        <div class="field name">
+            <label class="label" for="author"><span>Product Sku</span></label>
+            <div class="control">
+                <input name="product_sku" id="product_sku" title="Product Sku" class="input-text" type="text" data-validate="{required:true}" value="">
+            </div>
+        </div>
+        <div class="field name">
+            <label class="label" for="author"><span>Product Quantity</span></label>
+            <div class="control">
+                <input name="product_qty" id="product_qty" title="Product Qty" class="input-text" type="text" data-validate="{required:true}" value="">
+            </div>
+        </div>
+         <div class="field name">
+            <label class="label" for="author"><span>Stock Status</span></label>
+            <div class="control">
+                <select name="stock_status" id="stock_status" title="STock Status" class="select" > 
+                    <option data-title="In Stock" value="1">In Stock</option>
+                    <option data-title="Out of Stock" value="0">Out of Stock</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="Submit" class="action submit primary">
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</form>

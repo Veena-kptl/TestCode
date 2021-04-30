@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="LoginRestriction\TaskModule\Api\Data\IpInterface" type="LoginRestriction\TaskModule\Model\Ip" />
+    
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ipaddress_entity_list_data_source" xsi:type="string">LoginRestriction\TaskModule\Model\ResourceModel\Ip\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="LoginRestriction\TaskModule\Model\ResourceModel\Ip\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">ip_address</argument>
+            <argument name="resourceModel" xsi:type="string">LoginRestriction\TaskModule\Model\ResourceModel\Ip</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,40 +1,56 @@
 <?php
-namespace Emipro\Blog\Controller\Index;
+
+namespace CrudExample\CustomModule\Controller\Index;
+
+use Magento\Framework\Exception\NotFoundException;
+use Magento\Model\View\Result\Redirect;
+use Magento\Framework\Controller\ResultInterface;
+use CrudExample\CustomModule\Api\BookRepositoryInterface;
 
 class Delete extends \Magento\Framework\App\Action\Action
 {
-   public function __construct(\Magento\Framework\App\Action\Context $context) {
+
+    /**
+     * @var BookRepositoryInterface
+     */
+    private $bookRepository;
+
+    /**
+     * @param Action\Context $context
+     * @param BookRepositoryInterface $bookRepository
+     */
+    public function __construct(
+        \Magento\Framework\App\Action\Context $context,
+        BookRepositoryInterface $bookRepository
+    ) {
         parent::__construct($context);
+
+        $this->bookRepository = $bookRepository;
     }
-  public function execute()
-  {
-      $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-      $customerSession = $objectManager->get('Magento\Customer\Model\Session');
-      $resultRedirect = $this->resultRedirectFactory->create();
-      if($customerSession->isLoggedIn()) {
-        $data = $this->getRequest()->getParams('id');
-        $postCollection = $objectManager->create('Emipro\Blog\Model\Blog')->getCollection();
-        $postCollection->addFieldToFilter('id', array('eq' => $data));
-        $postuser = $postCollection->getFirstItem()->getUser();
-        $loginuser = $customerSession->getCustomer()->getEmail();
-        if($postuser == $loginuser){
-          if($data){
-          $content = $this->_objectManager->create('Emipro\Blog\Model\Blog');
-          $content->load($data);
-          $content->delete();
-          $this->messageManager->addSuccess(__("Post Successfully Delete."));
-          return $resultRedirect->setPath('blog/customer');
-          }else{
-          $this->messageManager->addError(__("Somthing Wrong. Please Try Again."));
-          return $resultRedirect->setPath('blog/customer');
-          }
-        }else{
-        $this->messageManager->addError(__("Somthing Wrong. Please Try Again."));
-        return $resultRedirect->setPath('blog/customer');
+
+    /**
+     * @return ResultInterface
+     */
+    public function execute()
+    {
+        $id = $this->getRequest()->getParam('id');
+
+        /** @var Redirect $resultRedirect */
+        $resultRedirect = $this->resultRedirectFactory->create();
+        if ($id) {
+            try {
+                $this->bookRepository->deleteById($id);
+                $this->messageManager->addSuccessMessage(__('The Book has been deleted.'));
+
+                return $resultRedirect->setPath('*/*/');
+            } catch (\Exception $e) {
+                $this->messageManager->addErrorMessage($e->getMessage());
+
+                return $resultRedirect->setPath('*/*/edit', ['id' => $id]);
+            }
         }
-      }else{
-        $this->messageManager->addError(__("Somthing Wrong. Please Try Again."));
-        return $resultRedirect->setPath('blog/customer');
-      }
+        $this->messageManager->addErrorMessage(__('We can\'t find a Book to delete.'));
+
+        return $resultRedirect->setPath('*/*/');
     }
 }

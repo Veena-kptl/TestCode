@@ -1,0 +1,113 @@
+<?php
+    $singleData = $block->getSingleData();
+    $type=$singleData->getType();
+    $author=explode(',',$singleData->getAuthor());
+    $rating=$singleData->getRating();
+    $lang=explode(',',$singleData->getLanguage());
+    $status=$singleData->getStatus();
+    $a=0;
+    $l=0;
+?>
+<form class="" action="<?php echo $this->getUrl('*/*/editdata/id/'.$singleData->getId()) ?>" id="book-form" method="post" enctype='multipart/form-data'  data-mage-init='{"validation": {}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span>Test Form For Book Module <a href="<?php echo $block->getBaseUrl().'book/index/list'; ?>">(Visit List Page)</a></span></legend><br>
+        <div class="field note no-label">Edit Book <?php echo $singleData->getName(); ?></div>
+        <div class="field book_type">
+            <label class="label" for="title"><span>Book Type</span></label>
+            <div class="control">
+                <select id="book_type" name="book_type" title="<?= $block->escapeHtmlAttr(__('Book')) ?>" class="select" data-validate="{required:true}">
+                    <option value="">-- Please Select --</option>
+                    <option data-title="Horror" value="Horror"  <?php echo $type == "Horror" ? "Selected" : ""; ?> >Horror</option>
+                    <option data-title="Romance" value="Romance" <?php echo $type == "Romance" ? "Selected" : ""; ?>>Romance</option>
+                    <option data-title="Thriller" value="Thriller" <?php echo $type == "Thriller" ? "Selected" : ""; ?>>Thriller</option>
+                    <option data-title="Biography" value="Biography" <?php echo $type == "Biography" ? "Selected" : ""; ?>>Biography</option>
+                    <option data-title="Comedy" value="Comedy" <?php echo $type == "Comedy" ? "Selected" : ""; ?>>Comedy</option>
+                </select>
+            </div>
+        </div>
+        <div class="field name">
+            <label class="label" for="author"><span>Name</span></label>
+            <div class="control">
+                <input name="name" id="name" title="Name" class="input-text" type="text" data-validate="{required:true}" value="<?php echo $singleData->getName(); ?>">
+            </div>
+        </div>
+        <div class="field content">
+            <label class="label" for="content"><span>Content</span></label>
+            <div class="control">
+                <textarea name="content" id="content" title="Content" class="input-text" cols="5" rows="3" data-validate="{required:true}"><?php echo $singleData->getContent(); ?></textarea>
+            </div>
+        </div>
+        <div class="field author">
+            <label class="label" for="author"><span>Author</span></label>
+            <div class="control">
+                <select name="author[]" id="author" title="Author" class="multiple" type="text" data-validate="{required:true}" multiple>
+                    <option data-title="Chetan Bhagat" value="Chetan Bhagat" <?php $author[$a] == "Chetan Bhagat" ? "Selected" : "" ; ?>>Chetan Bhagat</option>
+                    <option data-title="Vikram Seth" value="Vikram Seth" <?php echo $author[$a] == "Vikram Seth" ? "Selected" : ""; ?>>Vikram Seth</option>
+                    <option data-title="Arundhati Roy" value="Arundhati Roy" <?php echo $author[$a] == "Arundhati Roy" ? "Selected" : ""; ?>>Arundhati Roy</option>
+                    <option data-title="Khushwant Singh" value="Khushwant Singh" <?php echo $author[$a] == "Khushwant Singh" ? "Selected" : ""; ?>>Khushwant Singh</option>
+                </select>
+            </div>
+        </div>
+        <div class="field color">
+            <label class="label" for="image"><span>Color</span></label>
+            <div class="control">
+                <input name="color" id="color" title="Color" class="input-text" type="color" value="<?php echo $singleData->getColor(); ?>">
+            </div>
+        </div>
+        <div class="field language">
+            <label class="label" for="image"><span>Language</span></label>
+            <div class="control">
+                <div class="input-box">
+                    <input type="checkbox" name="language[]" value="Hindi" class="checkbox" <?php $lang[$l] == "Hindi" ? "Checked" : "" ; ?>> Hindi
+                </div>
+                <div class="input-box">
+                    <input type="checkbox" name="language[]" value="English" class="checkbox" <?php $lang[$l] == "English" ? "Checked" : "" ; ?>> English
+                </div>
+                <div class="input-box">
+                    <input type="checkbox" name="language[]" value="Marathi" class="checkbox" <?php $lang[$l] == "Marathi" ? "Checked" : "" ; ?>> Marathi
+                </div>
+                <div class="input-box">
+                    <input type="checkbox" name="language[]" value="Gujarati" class="checkbox" <?php $lang[$l] == "Gujarati" ? "Checked" : "" ; ?>> Gujarati
+                </div>
+            </div>
+        </div>
+        <div class="field rating">
+            <label class="label" for="image"><span>Rating</span></label>
+            <div class="control">
+                <div class="input-box">
+                    <input type="radio" name="rating" value="1" class="radio" <?php echo $rating == "1" ? "Checked" : ""; ?>> 1 Star
+                </div>
+                <div class="input-box">
+                    <input type="radio" name="rating" value="2" class="radio" <?php echo $rating == "2" ? "Checked" : ""; ?>> 2 Star
+                </div>
+                <div class="input-box">
+                    <input type="radio" name="rating" value="3" class="radio" <?php echo $rating == "3" ? "Checked" : ""; ?>> 3 Star
+                </div>
+                <div class="input-box">
+                    <input type="radio" name="rating" value="4" class="radio" <?php echo $rating == "4" ? "Checked" : ""; ?>> 4 Star
+                </div>
+                <div class="input-box">
+                    <input type="radio" name="rating" value="5" class="radio" <?php echo $rating == "5" ? "Checked" : ""; ?>> 5 Star
+                </div>
+            </div>
+        </div>
+        <div class="field rating">
+            <label class="label" for="image"><span>Visible</span></label>
+            <div class="control">
+                <div class="input-box">
+                    <input type="radio" name="status" value="0" class="radio" <?php echo $status == "0" ? "Checked" : ""; ?>> Disable
+                </div>
+                <div class="input-box">
+                    <input type="radio" name="status" value="1" class="radio" <?php echo $status == "1" ? "Checked" : ""; ?>> Enable
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="Submit" class="action submit primary">
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="ip_address" resource="default" engine="innodb" comment="IP address">
+        <column xsi:type="int" name="ip_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="ip_address" nullable="false" length="255" comment="Ip Address"/>
+        <column xsi:type="tinyint" name="ip_status" nullable="false" comment="Ip Status"/>
+        <column xsi:type="timestamp" name="created" default="CURRENT_TIMESTAMP" on_update="false" comment="Time of event"/>
+        <column xsi:type="timestamp" name="date_closed" default="CURRENT_TIMESTAMP" on_update="true" comment="Time of event"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">   <column name="ip_id"/> </constraint>
+    </table>
+</schema>
+

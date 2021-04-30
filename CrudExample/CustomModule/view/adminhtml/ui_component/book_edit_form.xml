@@ -195,38 +195,30 @@
                 <visible>true</visible>
                 <dataScope>color</dataScope>
             </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
         </field>
-        <checkboxset name="language">
+        <field name="language">
             <argument name="data" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Language</item>
+                <item name="options" xsi:type="object">CrudExample\CustomModule\Model\Config\Checkboxlanguage</item>
                 <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">language</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
                     <item name="source" xsi:type="string">test_book</item>
+                    <item name="multiple" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">language</item>
                 </item>
             </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">Language</label>
-                <visible>true</visible>
-                <dataScope>language</dataScope>
-                <options>
-                    <option name="0" xsi:type="array">
-                        <item name="value" xsi:type="string">Hindi</item>
-                        <item name="label" xsi:type="string" translate="true">Hindi</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                        <item name="value" xsi:type="string">English</item>
-                        <item name="label" xsi:type="string" translate="true">English</item>
-                    </option>
-                    <option name="2" xsi:type="array">
-                        <item name="value" xsi:type="string">Marathi</item>
-                        <item name="label" xsi:type="string" translate="true">Marathi</item>
-                    </option>
-                    <option name="3" xsi:type="array">
-                        <item name="value" xsi:type="string">Gujarati</item>
-                        <item name="label" xsi:type="string" translate="true">Gujarati</item>
-                    </option>
-                </options>
-            </settings>
-        </checkboxset>
+        </field>
         <radioset name="rating">
              <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
