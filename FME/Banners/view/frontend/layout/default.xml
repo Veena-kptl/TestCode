@@ -10,11 +10,11 @@
     <head>
         <css src="FME_Banners::css/banners.css" />
     </head>
-<!--    <body>
+    <body>
         
         <referenceContainer name="content">
             <block template="FME_Banners::banners.phtml" class="FME\Banners\Block\Banners" name="banners" />            
         </referenceContainer>
         
-    </body>-->
+    </body>
 </page>
