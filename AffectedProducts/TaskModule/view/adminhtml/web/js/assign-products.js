@@ -10,7 +10,7 @@ define([
         /**
          * Show selected product when edit form in associated product grid
          */
-        $('product_ids').value = Object.toJSON(categoryProducts);
+        $('rh_products').value = Object.toJSON(categoryProducts);
         /**
          * Register Category Product
          *
@@ -63,7 +63,7 @@ define([
             var element = Event.element(event);
             if (element && element.checkboxElement && element.checkboxElement.checked) {
                 categoryProducts.set(element.checkboxElement.value, element.value);
-                $('product_ids').value = Object.toJSON(categoryProducts);
+                $('rh_products').value = Object.toJSON(categoryProducts);
             }
         }
         /**

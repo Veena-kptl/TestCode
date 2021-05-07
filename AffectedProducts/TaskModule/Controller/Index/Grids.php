@@ -1,7 +1,5 @@
 <?php
-/**
- * Created By : RH
- */
+
 namespace AffectedProducts\TaskModule\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;

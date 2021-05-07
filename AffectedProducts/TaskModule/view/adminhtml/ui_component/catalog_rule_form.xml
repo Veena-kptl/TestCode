@@ -16,7 +16,7 @@
                 </item>
             </argument>
             <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">AffectedProducts\TaskModule\Block\Adminhtml\Products\Edit\AssignProducts</argument>
+                <argument name="block" xsi:type="object">AffectedProducts\TaskModule\Block\Adminhtml\AssignProducts</argument>
             </htmlContent>
         </container>
     </fieldset>
