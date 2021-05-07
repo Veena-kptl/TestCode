@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="CrudExample\CustomModule\Api\Data\BookInterface" type="CrudExample\CustomModule\Model\Book" />
+    <preference for="CrudExample\CustomModule\Api\BookRepositoryInterface" type="CrudExample\CustomModule\Model\Repository\BookRepository" />
+    <preference for="CrudExample\CustomModule\Api\Data\BookSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+
+    <virtualType name="BookGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="BookGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">CrudExample\CustomModule\Model\Resource\Book\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">BookGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="CrudExample\CustomModule\Model\ResourceModel\Book\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">test_book</argument>
+            <argument name="resourceModel" xsi:type="string">CrudExample\CustomModule\Model\ResourceModel\Book</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="book_index_listing_data_source" xsi:type="string">CrudExample\CustomModule\Model\ResourceModel\Book\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

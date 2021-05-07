@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/** 
+ * @package   LoginRestriction_TaskModule
+ * @author    Ricky Thakur (Kapil Dev Singh)
+ * @copyright Copyright (c) 2018 Ricky Thakur
+ * @license   MIT license (see LICENSE.txt for details)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+        id="LoginRestriction_TaskModule::menu_1" 
+        title="Ip Address" 
+        module="LoginRestriction_TaskModule" 
+        sortOrder="10" 
+        resource="LoginRestriction_TaskModule::menu_1" />
+        
+        <add 
+        id="LoginRestriction_TaskModule::menu_1_1" 
+        title="Manage Address" 
+        module="LoginRestriction_TaskModule" 
+        sortOrder="20" 
+        parent="LoginRestriction_TaskModule::menu_1" 
+        action="ipaddr/index" 
+        resource="LoginRestriction_TaskModule::menu_1_1"/>
+    </menu>
+</config>

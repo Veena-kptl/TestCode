@@ -1,0 +1,26 @@
+<?php
+$config = $block->getLayout()->createBlock(\Magento\Config\Block\System\Config\Form::class);
+$father_name = $config->getConfigValue('customer/general/father_name');
+$mother_name = $config->getConfigValue('customer/general/mother_name');
+?>
+<p>
+    <?php 
+        if($father_name): 
+        $fatherName = $block->getCustomer()->getCustomAttribute('father_name');
+        $customerFatherName = $fatherName ? $fatherName->getValue() : null;
+        
+    ?>
+    <p>
+        <?= $block->escapeHtml(__('Your Father Name: %1', $customerFatherName)); ?><br>
+    </p>
+    <?php
+    endif;
+    if($mother_name): 
+        $motherName = $block->getCustomer()->getCustomAttribute('mother_name');
+        $customerMotherName = $motherName ? $motherName->getValue() : null;
+    ?>  
+    <p>
+        <?= $block->escapeHtml(__('Your Mother Name: %1', $customerMotherName)); ?><br>
+    </p>
+    <?php endif; ?>
+</p>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CrudExample_CustomModule::book_content" title="Simple CRUD" module="CrudExample_CustomModule" sortOrder="62" resource="CrudExample_CustomModule::module"/>
+        <add id="CrudExample_CustomModule::book" title="Books" module="CrudExample_CustomModule" sortOrder="1" parent="CrudExample_CustomModule::book_content" action="book/index" resource="CrudExample_CustomModule::book"/>
+    </menu>
+</config>

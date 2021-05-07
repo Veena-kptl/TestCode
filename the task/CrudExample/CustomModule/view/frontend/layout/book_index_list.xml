@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Book List</title>
+        <css src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" src_type="url"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="CrudExample\CustomModule\Block\BookListData" name="book.listdata" template="CrudExample_CustomModule::list.phtml" cacheable="false">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

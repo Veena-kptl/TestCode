@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <TaskModule>
+            <TaskModule>
+                <status>1</status>
+            </TaskModule>
+        </TaskModule>
+        <TaskModule>
+            <TaskModule>
+                <name>Extra Fee</name>
+            </TaskModule>
+        </TaskModule>
+		<TaskModule>
+            <TaskModule>
+                <TaskModule_amount>5</TaskModule_amount>
+            </TaskModule>
+        </TaskModule>
+    </default>
+</config>

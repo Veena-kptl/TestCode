@@ -1,0 +1,37 @@
+<?php
+    $singleData = $block->getSingleData();
+?>
+<table>
+    <tr>
+        <th><h3>Title</h3></th>
+        <td><p><?php echo $singleData->getName(); ?></p></td>   
+    </tr>
+    <tr>
+        <th><h3>Author</h3></th>
+        <td><p><?php echo $singleData->getAuthor(); ?></p></td>
+    </tr>
+    <tr>
+        <th><h3>Content</h3></th>
+        <td><p><?php echo $this->_filterProvider->getPageFilter()->filter($singleData->getContent()); ?></p></td>
+    </tr>
+    <tr>
+	    <th><h3>Type</h3></th>
+        <td><p><?php echo $singleData->getType(); ?></p></td>
+    </tr>
+    <tr>
+	    <th><h3>Author</h3></th>
+        <td><p><?php echo $singleData->getAuthor(); ?></p></td>
+    </tr>
+    <tr>
+	    <th><h3>Available in Languages</h3></th>
+        <td><p><?php echo $singleData->getLanguage(); ?></p></td>
+    </tr>
+    <tr>
+	    <th><h3>Rating</h3></th>
+        <td><p><?php echo $singleData->getRating(); ?> Star</p></td>
+    </tr>
+    <tr>
+        <th><h3>Date</h3></th>
+        <td><p><?php echo $singleData->getCreatedAt(); ?></p></td>
+    </tr>
+</table>

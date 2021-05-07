@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ipaddress_Ip_form.ipaddress_Ip_form_data_source</item>
+            <item name="deps" xsi:type="string">ipaddress_Ip_form.ipaddress_Ip_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Ip Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">ipaddress_Ip_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">LoginRestriction\TaskModule\Block\Adminhtml\Ip\Edit\BackButton</item>
+            <item name="reset" xsi:type="string">LoginRestriction\TaskModule\Block\Adminhtml\Ip\Edit\ResetButton</item>
+            <item name="delete" xsi:type="string">LoginRestriction\TaskModule\Block\Adminhtml\Ip\Edit\DeleteButton</item>
+            <item name="save" xsi:type="string">LoginRestriction\TaskModule\Block\Adminhtml\Ip\Edit\SaveButton</item>          
+            <item name="save_and_continue" xsi:type="string">LoginRestriction\TaskModule\Block\Adminhtml\Ip\Edit\SaveAndContinueButton</item>
+              
+        </item>
+    </argument>
+
+    <dataSource name="ipaddress_Ip_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">LoginRestriction\TaskModule\Model\Ip\DataProvider</argument>
+            <argument name="name" xsi:type="string">ipaddress_Ip_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">ip_id</argument>
+            <argument name="requestFieldName" xsi:type="string">ip_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+    <fieldset name="IpFields">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true"></item>
+            </item>
+        </argument>
+
+        <!-- This field represents form id and is hidden -->
+        <field name="ip_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">ip_address</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="ip_address">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">IP Address</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">ip_address</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="ip_status" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">ip_address</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Visible</label>
+                <visible>true</visible>
+                <dataScope>Ip Status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <prefer>toggle</prefer>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
+  

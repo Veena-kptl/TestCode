@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">book_edit_form.book_edit_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Product Books</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="CrudExample\CustomModule\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="reset" class="CrudExample\CustomModule\Block\Adminhtml\Edit\ResetButton"/>
+            <button name="save" class="CrudExample\CustomModule\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="save_and_continue" class="CrudExample\CustomModule\Block\Adminhtml\Edit\SaveAndContinueButton"/>
+            <button name="back">
+                <url path="*/*/" />
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>book_edit_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>book_edit_form.book_edit_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="book_edit_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="book/index/save" />
+        </settings>
+        <dataProvider class="CrudExample\CustomModule\Model\Book\DataProvider" name="book_edit_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="author_data" sortOrder="10">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label translate="true">Book</label>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+        <field name="book_type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Book Type</label>
+                <visible>true</visible>
+                <dataScope>book_type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="Horror" xsi:type="array">
+                                <item name="value" xsi:type="string">Horror</item>
+                                <item name="label" xsi:type="string">Horror</item>
+                            </option>
+                            <option name="Romance" xsi:type="array">
+                                <item name="value" xsi:type="string">Romance</item>
+                                <item name="label" xsi:type="string">Romance</item>
+                            </option>
+                            <option name="Thriller" xsi:type="array">
+                                <item name="value" xsi:type="string">Thriller</item>
+                                <item name="label" xsi:type="string">Thriller</item>
+                            </option>
+                            <option name="Biography" xsi:type="array">
+                                <item name="value" xsi:type="string">Biography</item>
+                                <item name="label" xsi:type="string">Biography</item>
+                            </option>
+                            <option name="Comedy" xsi:type="array">
+                                <item name="value" xsi:type="string">Comedy</item>
+                                <item name="label" xsi:type="string">Comedy</item>
+                            </option>
+                        </options>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="name" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Book Name</label>
+                <visible>true</visible>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="content" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                    <item name="cols" xsi:type="number">15</item>
+                    <item name="rows" xsi:type="number">5</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Content</label>
+                <visible>true</visible>
+                <dataScope>content</dataScope>
+            </settings>
+        </field>
+        <field name="author" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Author</label>
+                <visible>true</visible>
+                <dataScope>author</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">Chetan Bhagat</item>
+                                <item name="label" xsi:type="string">Chetan Bhagat</item>
+                            </option>
+                            <option name="2" xsi:type="array">
+                                <item name="value" xsi:type="string">Vikram Seth</item>
+                                <item name="label" xsi:type="string">Vikram Seth</item>
+                            </option>
+                            <option name="3" xsi:type="array">
+                                <item name="value" xsi:type="string">Arundhati Roy</item>
+                                <item name="label" xsi:type="string">Arundhati Roy</item>
+                            </option>
+                             <option name="4" xsi:type="array">
+                                <item name="value" xsi:type="string">Khushwant Singh</item>
+                                <item name="label" xsi:type="string">Khushwant Singh</item>
+                            </option>
+                        </options>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="color" formElement="colorPicker">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <elementTmpl>ui/form/element/color-picker</elementTmpl>
+                <label translate="true">Color</label>
+                <visible>true</visible>
+                <dataScope>color</dataScope>
+            </settings>
+            <formElements>
+                <colorPicker>
+                    <settings>
+                        <colorPickerMode>full</colorPickerMode>
+                        <colorFormat>hex</colorFormat>
+                    </settings>
+                </colorPicker>
+            </formElements>
+        </field>
+        <field name="language">
+            <argument name="data" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Language</item>
+                <item name="options" xsi:type="object">CrudExample\CustomModule\Model\Config\Checkboxlanguage</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">language</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkboxset</item>
+                    <item name="source" xsi:type="string">test_book</item>
+                    <item name="multiple" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">language</item>
+                </item>
+            </argument>
+        </field>
+        <radioset name="rating">
+             <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Rating</label>
+                <dataType>smallint</dataType>
+                <visible>true</visible>
+                <dataScope>rating</dataScope>
+                <options>
+                    <option name="0" xsi:type="array">
+                        <item name="value" xsi:type="number">1</item>
+                        <item name="label" xsi:type="string" translate="true">1 Star</item>
+                    </option>
+                    <option name="1" xsi:type="array">
+                        <item name="value" xsi:type="number">2</item>
+                        <item name="label" xsi:type="string" translate="true">2 Star</item>
+                    </option>
+                    <option name="2" xsi:type="array">
+                        <item name="value" xsi:type="number">3</item>
+                        <item name="label" xsi:type="string" translate="true">3 Star</item>
+                    </option>
+                    <option name="3" xsi:type="array">
+                        <item name="value" xsi:type="number">4</item>
+                        <item name="label" xsi:type="string" translate="true">4 Star</item>
+                    </option>
+                    <option name="4" xsi:type="array">
+                        <item name="value" xsi:type="number">5</item>
+                        <item name="label" xsi:type="string" translate="true">5 Star</item>
+                    </option>
+                </options>
+            </settings>
+        </radioset>
+    </fieldset>
+    <fieldset name="book_information" sortOrder="20">
+        <settings>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+            <label translate="true">Information</label>
+        </settings>
+        <field name="created_at" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                    <item name="disabled" xsi:type="string">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Created at</label>
+                <visible>true</visible>
+                <dataScope>created_at</dataScope>
+            </settings>
+        </field>
+        <field name="updated_at" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                    <item name="disabled" xsi:type="string">true</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Updated at</label>
+                <visible>true</visible>
+                <dataScope>updated_at</dataScope>
+            </settings>
+        </field>
+        <field name="status" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">test_book</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Visible</label>
+                <visible>true</visible>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <prefer>toggle</prefer>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

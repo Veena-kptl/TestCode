@@ -1,0 +1,14 @@
+{
+    "ip_address": {
+        "column": {
+            "ip_id": true,
+            "ip_address": true,
+            "ip_status": true,
+            "created": true,
+            "date_closed": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

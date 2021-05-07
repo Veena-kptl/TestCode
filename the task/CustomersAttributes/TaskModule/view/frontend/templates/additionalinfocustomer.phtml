@@ -1,0 +1,40 @@
+<?php
+$config = $block->getLayout()->createBlock(\Magento\Config\Block\System\Config\Form::class);
+$father_name = $config->getConfigValue('customer/general/father_name');
+$mother_name = $config->getConfigValue('customer/general/mother_name');
+?>
+<?php
+
+        $fatherName = $block->getCustomer()->getCustomAttribute('father_name');
+        $customerFatherName = $fatherName ? $fatherName->getValue() : null;
+        $motherName = $block->getCustomer()->getCustomAttribute('mother_name');
+      $customerMotherName = $motherName ? $motherName->getValue() : null;
+?>
+
+<fieldset class="fieldset create account">
+       <?php if($father_name || $mother_name): ?>
+		<legend class="legend"><span><?php /* @escapeNotVerified */
+	            echo __('Additional Information') ?></span></legend>
+	<p>
+        <?php if($father_name): ?>
+		<div class="field father_name">
+	    	<label for="Father Name" class="label"><span><?php /* @escapeNotVerified */
+	            echo __('Your Father Name') ?></span></label>
+	    	<div class="control">
+	        	<input type="text" class="input-father_name" name="father_name" value="<?=$block->escapeHtmlAttr($customerFatherName);?>"  />
+	    	</div>
+		</div>
+        <?php endif; ?>
+        <?php if($mother_name): ?>
+		<div class="field mother_name">
+	    	<label for="Mother Name" class="label"><span><?php /* @escapeNotVerified */
+	            echo __('Your Mother Name') ?></span></label>
+	    	<div class="control">
+	        	<input type="text" class="input-mother_name" name="mother_name" value="<?=$block->escapeHtmlAttr($customerMotherName);?>"  />
+	    	</div>
+		</div>
+        <?php endif; ?>
+	</p>
+<?php endif; ?>
+</fieldset>
+

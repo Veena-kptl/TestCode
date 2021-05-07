@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       <add id="PopupLogin_TaskModule::customerlogin" title="Login/Signup Popup" module="PopupLogin_TaskModule" sortOrder="30"  resource="PopupLogin_TaskModule::core" />
+        <add id="PopupLogin_TaskModule::customerlogin_manage_config" title="Configuration" module="PopupLogin_TaskModule" sortOrder="10" parent="PopupLogin_TaskModule::customerlogin" action="adminhtml/system_config/edit/section/customerlogin" resource="PopupLogin_TaskModule::manage"/>
+    </menu>
+</config>

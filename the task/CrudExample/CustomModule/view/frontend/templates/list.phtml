@@ -1,0 +1,48 @@
+<?php $collection = $block->getBookCollection(); ?>
+<?php if($collection->count() > 0): ?>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+    <table class="data table" id="book-data-table">
+        <caption class="table-caption">Book Data</caption>
+        <thead>
+            <tr>
+                <th scope="col" class="col name">Name</th>
+                <th scope="col" class="col content">Content</th>
+                <th scope="col" class="col author">Author</th>
+                <th scope="col" class="col language">Language</th>
+                <th scope="col" class="col created_at">Created At</th>
+                <th scope="col" class="col actions">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($collection as $key => $data): ?>
+                <tr>
+                    <td data-th="Name" class="col name"><?php echo $data->getName(); ?></td>
+                    <td data-th="Content" class="col content"><?php echo $data->getContent(); ?></td>
+                    <td data-th="Author" class="col author"><?php echo $data->getAuthor(); ?></td>
+                    <td data-th="Language" class="col language"><?php echo $data->getLanguage(); ?></td>
+                    <td data-th="Date" class="col created_at"><?php echo $data->getCreatedAt(); ?></td>
+                    <td data-th="Actions" class="col actions">
+                        <?php $id = ($data->getId()) ? $data->getId() : $data['id']; ?>
+                        <!-- "$data->getTesting13Id()" was not working when I generated Vky_Testing13 module. That's why I had to place above line. -->
+                        <a href="<?php echo $block->getBaseUrl().'book/index/view/id/'.$id; ?>" class="action view">
+                            <i class="fa fa-eye"></i>
+                        </a>
+                        <a href="<?php echo $block->getBaseUrl().'book/index/edit/id/'.$id; ?>" class="action edit">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="<?php echo $block->getBaseUrl().'book/index/delete/id/'.$id; ?>" class="action delete">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <h2>We couldn't find any records</h2>
+<?php endif; ?>
