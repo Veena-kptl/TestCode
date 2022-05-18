@@ -20,7 +20,7 @@
         </arguments>
     </virtualType>
 
-    <virtualType name="CrudExample\CustomModule\Model\ResourceModel\Book\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="CrudExample\CustomModule\Model\ResourceModel\Book\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">test_book</argument>
             <argument name="resourceModel" xsi:type="string">CrudExample\CustomModule\Model\ResourceModel\Book</argument>
@@ -30,7 +30,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="book_index_listing_data_source" xsi:type="string">CrudExample\CustomModule\Model\ResourceModel\Book\Collection</item>
+                <item name="book_index_listing_data_source" xsi:type="string">CrudExample\CustomModule\Model\ResourceModel\Book\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
